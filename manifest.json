@@ -1,0 +1,47 @@
+{
+    "action": {
+        "default_icon": {
+            "128": "icon128.png",
+            "16": "icon16.png",
+            "48": "icon48.png"
+        },
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "js": ["content.js"],
+            "matches": [
+                "https://*.cnfans.com/*",
+                "https://*.2024.cnfans.com/*",
+                "https://*.mulebuy.com/*",
+                "https://*.joyabuy.com/*",
+                "https://*.orientdig.com/*",
+                "https://*.oopbuy.com/*",
+                "https://*.hoobuy.com/*"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "description": "Risker by Race removes Risk/Warm Reminder pop-ups and Affiliate Codes on Chinese shopping agents for a smoother experience",
+    "host_permissions": [
+        "https://*.cnfans.com/*",
+        "https://*.2024.cnfans.com/*",
+        "https://*.mulebuy.com/*",
+        "https://*.joyabuy.com/*",
+        "https://*.orientdig.com/*",
+        "https://*.oopbuy.com/*",
+        "https://*.hoobuy.com/*"
+    ],
+    "icons": {
+        "128": "icon128.png",
+        "16": "icon16.png",
+        "48": "icon48.png"
+    },
+    "manifest_version": 3,
+    "name": "Risker by Race",
+    "permissions": ["activeTab", "scripting"],
+    "version": "1.2"
+}
