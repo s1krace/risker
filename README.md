@@ -19,7 +19,6 @@ Risker by Race currently targets the following websites for risk reminder remova
 * `cnfans.com`
 * `2024.cnfans.com`
 * `mulebuy.com`
-* `joyabuy.com`
 * `joyagoo.com`
 * `orientdig.com`
 * `oopbuy.com`
