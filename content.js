@@ -14,13 +14,16 @@
     // Keywords for text-based matching (case-insensitive)
     const riskKeywords = /(risk|warning|reminder|caution|alert)/i;
 
-    // Function to remove affiliate codes from a URL (Brute Force)
+    // Function to remove affiliate codes from a URL using URL API
     function removeAffiliateCodeBrute(url) {
         try {
             console.log("Original URL (Brute):", url);
-            let cleanedURL = url.replace(/&ref=[^&]*/i, "");
-            cleanedURL = cleanedURL.replace(/\?ref=[^&]*/i, "?");
-
+            const urlObj = new URL(url);
+            const paramsToRemove = ['ref', 'inviteCode'];
+            paramsToRemove.forEach(param => {
+                urlObj.searchParams.delete(param);
+            });
+            const cleanedURL = urlObj.toString();
             console.log("Cleaned URL (Brute):", cleanedURL);
             return cleanedURL;
         } catch (error) {
@@ -176,7 +179,7 @@
                 removed = true;
             }
         } else if (
-            ["mulebuy.com", "joyabuy.com", "orientdig.com", "hoobuy.com", "oopbuy.com"].includes(
+            ["mulebuy.com", "joyabuy.com", "joyagoo.com", "orientdig.com", "hoobuy.com", "oopbuy.com"].includes(
                 hostname
             )
         ) {
