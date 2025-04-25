@@ -18,6 +18,7 @@
                 "https://*.2024.cnfans.com/*",
                 "https://*.mulebuy.com/*",
                 "https://*.joyabuy.com/*",
+                "https://*.joyagoo.com/*",
                 "https://*.orientdig.com/*",
                 "https://*.oopbuy.com/*",
                 "https://*.hoobuy.com/*"
@@ -31,6 +32,7 @@
         "https://*.2024.cnfans.com/*",
         "https://*.mulebuy.com/*",
         "https://*.joyabuy.com/*",
+        "https://*.joyagoo.com/*",
         "https://*.orientdig.com/*",
         "https://*.oopbuy.com/*",
         "https://*.hoobuy.com/*"
@@ -42,6 +44,6 @@
     },
     "manifest_version": 3,
     "name": "Risker by Race",
-    "permissions": ["activeTab", "scripting"],
-    "version": "1.2"
+    "permissions": ["activeTab", "scripting", "storage"],
+    "version": "1.3"
 }
