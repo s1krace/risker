@@ -23,10 +23,11 @@
                 "https://*.oopbuy.com/*",
                 "https://*.hoobuy.com/*"
             ],
-            "run_at": "document_start"
+            "run_at": "document_start",
+            "all_frames": true
         }
     ],
-    "description": "Risker by Race removes Risk/Warm Reminder pop-ups and Affiliate Codes on Chinese shopping agents for a smoother experience",
+    "description": "Enhanced shopping experience by removing interruptions on popular shopping agent sites",
     "host_permissions": [
         "https://*.cnfans.com/*",
         "https://*.2024.cnfans.com/*",
@@ -45,5 +46,11 @@
     "manifest_version": 3,
     "name": "Risker by Race",
     "permissions": ["activeTab", "scripting", "storage"],
-    "version": "1.3"
+    "version": "1.4.0",
+    "web_accessible_resources": [
+        {
+            "resources": ["page_script.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
