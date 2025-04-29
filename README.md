@@ -1,20 +1,20 @@
 # Risker by Race - Your Peacekeeper 🛡️
 
-## Tired of annoying pop-ups and sneaky affiliate links? You've come to the right place! 👋
+## Cleaner Browsing Awaits! 👋
 
-Risker by Race is a lightweight Chrome extension designed to declutter your web experience by automatically removing those pesky risk/warning reminders and sanitizing URLs from affiliate tracking codes. Enjoy a cleaner, faster, and more focused browsing session without the unnecessary noise.
+Tired of annoying pop-ups and sneaky affiliate links? Risker by Race is your solution! This lightweight Chrome extension automatically removes risk/warning reminders and cleans URLs of affiliate tracking codes, giving you a cleaner, faster browsing experience.
 
 ## ✨ Key Features
 
-* **Automatic Risk Reminder Removal:** Bid farewell to intrusive pop-ups on supported sites that interrupt your flow.
-* **Affiliate Link Sanitization:** Say goodbye to long, cluttered URLs filled with tracking parameters. Get straight to the content you want.
-* **Subtle Notifications:** When an action is taken, you'll receive a discreet, terminal-style notification to keep you informed without being disruptive.
-* **Lightweight & Efficient:** Runs quietly in the background without slowing down your browser.
-* **Privacy-Focused:** We don't track your browsing data. This extension operates locally on your browser.
+* **Automatic Risk Reminder Removal:** No more intrusive pop-ups on supported sites.
+* **Affiliate Link Sanitization:** Clean, straightforward URLs without tracking parameters.
+* **Subtle Notifications:** Discreet, terminal-style notifications keep you informed without disruption.
+* **Lightweight & Efficient:** Runs quietly in the background, keeping your browser fast.
+* **Privacy-Focused:** No tracking of your browsing data. Operates locally on your browser.
 
 ## 🎯 Supported Websites
 
-Risker by Race currently targets the following websites for risk reminder removal:
+Risker by Race currently targets:
 
 * `cnfans.com`
 * `2024.cnfans.com`
@@ -28,26 +28,25 @@ More sites may be added in future updates!
 
 ## ⚙️ Installation - Easy as 1-2-3!
 
-1.  **Download the Code:** Click the green "Code" button on this page and select "Download ZIP."
-2.  **Unpack the Files:** Extract the contents of the downloaded ZIP file to a folder on your computer.
+1.  **Download the Code:** Click the green "Code" button and select "Download ZIP."
+2.  **Unpack the Files:** Extract the ZIP file to a folder on your computer.
 3.  **Load in Chrome:**
-    * Open Google Chrome and navigate to `chrome://extensions/` in the address bar.
-    * Toggle the "Developer mode" switch in the top right corner to the "ON" position.
-    * Click the "Load unpacked" button in the top left corner.
-    * Select the folder where you unzipped the Risker by Race files and click "Open."
+    * Open Chrome and go to `chrome://extensions/`.
+    * Enable "Developer mode."
+    * Click "Load unpacked" and select the unzipped folder.
 
-That's it! Risker by Race is now active in your Chrome browser.
+Risker by Race is now active in your Chrome browser.
 
 ## 🚀 How to Use
 
-Once installed, Risker by Race works automatically as you browse the web. You don't need to click any buttons or configure any settings. When you visit a supported website, the extension will silently remove risk reminders and clean up affiliate links in the background. You'll see a brief, subtle notification when an action is taken.
+Once installed, Risker by Race works automatically. No configuration needed. It silently removes risk reminders and cleans affiliate links, with a brief notification when an action is taken.
 
 ## 🤝 Contributing
 
-Have ideas for improvement or want to add support for more websites? We welcome contributions! Feel free to:
+Have ideas or want to add more websites? Contribute by:
 
-* Submit bug reports or feature requests through the "Issues" tab.
-* Fork the repository and submit pull requests with your enhancements.
+* Submitting bug reports or feature requests through the "Issues" tab.
+* Forking the repository and submitting pull requests.
 
 ## 📜 License
 
