@@ -1,10 +1,8 @@
 # Risker by Race 🛡️
 
-## Have a Smooth Browsing Experience! 🌟
+Removes risk overlays/popups and cleans affiliate links on Chinese shopping sites. Works locally in your browser with no tracking.
 
-Fed up with those annoying risk/warning pop-ups and affiliate links on Chinese shopping agent sites? Risker by Race is here to ensure your browsing experience is smooth and hassle-free! This Chrome extension is light and removes those pesky reminders automatically, cleaning up URLs and giving you a cleaner, faster browsing experience.
-
-## ✨ Key Features
+## Features
 
 * **Auto Pop-Up Remover:** Eliminate obstructive risk/warning pop-ups on supported sites.
 * **Clean Links:** Eliminate affiliate tracking codes for tidy, simple links.
