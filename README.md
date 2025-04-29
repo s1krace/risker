@@ -1,20 +1,22 @@
 # Risker by Race 🛡️
 
-## Chill Out and Browse Better! 👋
+## Enjoy a Seamless Browsing Experience! 🌟
 
-Tired of annoying pop-ups and sneaky affiliate links? Risker by Race has got you covered! This lightweight Chrome extension automatically removes those pesky risk/warning reminders and cleans up URLs by getting rid of affiliate tracking codes. Enjoy a cleaner, faster browsing experience without the hassle.
+Are you tired of those annoying risk/warning pop-ups and sneaky affiliate links on Chinese shopping agent sites? Risker by Race is here to make your browsing experience smooth and hassle-free! This lightweight Chrome extension automatically removes those pesky reminders and cleans up URLs, giving you a cleaner, faster browsing experience.
 
 ## ✨ Key Features
 
-* **Automatic Risk Reminder Removal:** Say goodbye to intrusive pop-ups on supported sites.
-* **Affiliate Link Sanitization:** Clean, straightforward URLs without tracking parameters.
-* **Subtle Notifications:** Discreet, terminal-style notifications keep you informed without being disruptive.
-* **Lightweight & Efficient:** Runs quietly in the background, keeping your browser fast.
-* **Privacy-Focused:** We don't track your browsing data. This extension operates locally on your browser.
+* **Automatic Pop-Up Removal:** Say goodbye to intrusive risk/warning pop-ups on supported sites.
+* **Clean URLs:** Strip away affiliate tracking codes for straightforward, clean links.
+* **Discreet Notifications:** Stay informed with subtle, terminal-style notifications that don't disrupt your flow.
+* **Efficient Performance:** Runs silently in the background, ensuring your browser stays fast and responsive.
+* **Privacy-First:** No tracking of your browsing data. Everything operates locally on your browser.
+* **No Redirects:** Direct access to the content you want, without any detours.
+* **Completely Free:** Enjoy all features without any hidden costs or subscriptions.
 
 ## 🎯 Supported Websites
 
-Risker by Race currently targets:
+Risker by Race currently supports:
 
 * `cnfans.com`
 * `2024.cnfans.com`
@@ -24,29 +26,29 @@ Risker by Race currently targets:
 * `oopbuy.com`
 * `hoobuy.com`
 
-More sites may be added in future updates!
+Stay tuned for more sites in future updates!
 
-## ⚙️ Installation - Easy as 1-2-3!
+## ⚙️ Easy Installation
 
-1.  **Download the Code:** Click the green "Code" button and select "Download ZIP."
-2.  **Unpack the Files:** Extract the ZIP file to a folder on your computer.
-3.  **Load in Chrome:**
-    * Open Chrome and go to `chrome://extensions/`.
-    * Enable "Developer mode."
-    * Click "Load unpacked" and select the unzipped folder.
+1. **Download the Code:** Click the green "Code" button and select "Download ZIP."
+2. **Extract Files:** Unzip the downloaded file to a folder on your computer.
+3. **Load in Chrome:**
+   * Open Chrome and navigate to `chrome://extensions/`.
+   * Enable "Developer mode" in the top right corner.
+   * Click "Load unpacked" and select the folder where you extracted the files.
 
-Risker by Race is now active in your Chrome browser.
+Risker by Race is now ready to enhance your browsing experience!
 
-## 🚀 How to Use
+## 🚀 How It Works
 
-Once installed, Risker by Race works automatically. No configuration needed. It silently removes risk reminders and cleans affiliate links, with a brief notification when an action is taken.
+Once installed, Risker by Race works automatically. No need for any setup or configuration. It silently removes risk reminders and cleans affiliate links, with a brief notification to keep you informed.
 
-## 🤝 Contributing
+## 🤝 Contribute
 
-Have ideas or want to add more websites? Contribute by:
+Got ideas for improvement or want to add support for more websites? We welcome your contributions!
 
-* Submitting bug reports or feature requests through the "Issues" tab.
-* Forking the repository and submitting pull requests.
+* Report bugs or suggest features through the "Issues" tab.
+* Fork the repository and submit pull requests with your enhancements.
 
 ## 📜 License
 
