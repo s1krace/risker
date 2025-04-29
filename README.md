@@ -1,16 +1,16 @@
 # Risker by Race - Your Peacekeeper 🛡️
 
-## Cleaner Browsing Awaits! 👋
+## Chill Out and Browse Better! 👋
 
-Tired of annoying pop-ups and sneaky affiliate links? Risker by Race is your solution! This lightweight Chrome extension automatically removes risk/warning reminders and cleans URLs of affiliate tracking codes, giving you a cleaner, faster browsing experience.
+Tired of annoying pop-ups and sneaky affiliate links? Risker by Race has got you covered! This lightweight Chrome extension automatically removes those pesky risk/warning reminders and cleans up URLs by getting rid of affiliate tracking codes. Enjoy a cleaner, faster browsing experience without the hassle.
 
 ## ✨ Key Features
 
-* **Automatic Risk Reminder Removal:** No more intrusive pop-ups on supported sites.
+* **Automatic Risk Reminder Removal:** Say goodbye to intrusive pop-ups on supported sites.
 * **Affiliate Link Sanitization:** Clean, straightforward URLs without tracking parameters.
-* **Subtle Notifications:** Discreet, terminal-style notifications keep you informed without disruption.
+* **Subtle Notifications:** Discreet, terminal-style notifications keep you informed without being disruptive.
 * **Lightweight & Efficient:** Runs quietly in the background, keeping your browser fast.
-* **Privacy-Focused:** No tracking of your browsing data. Operates locally on your browser.
+* **Privacy-Focused:** We don't track your browsing data. This extension operates locally on your browser.
 
 ## 🎯 Supported Websites
 
