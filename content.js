@@ -1,66 +1,102 @@
+// =========================
+// Content Script Main Entry
+// =========================
 (function () {
-    const instanceId = Math.random().toString(36).substring(2, 10);
-    
-    const _ops = {
+    // === ADVANCED OBFUSCATION UTILS ===
+    function randName(len=8) {
+        const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let out = '';
+        for (let i=0;i<len;i++) out += chars[Math.floor(Math.random()*chars.length)];
+        return out + Math.floor(Math.random()*10000);
+    }
+    function b64d(s) { return atob(s); }
+    function dynFunc(args, body) { return new Function(args, body); }
+    const instanceId = Math.random().toString(36).substring(2, 10) + Date.now().toString(36).slice(-4) + Date.now().toString(36).slice(-4);
+
+    // =========================
+    // 1. Utility Functions
+    // =========================
+    // === RUNTIME-GENERATED UTILS ===
+    const domUtils = {
+        // Remove element from DOM with randomized style hiding
         rmv: function(el) {
             if (!el) return;
             try {
-                el.style.display = "none";
-                el.style.visibility = "hidden";
-                el.style.opacity = "0";
-                el.style.pointerEvents = "none";
+                const styles = [
+                    ['display', 'none'],
+                    ['visibility', 'hidden'],
+                    ['opacity', '0'],
+                    ['pointerEvents', 'none']
+                ].sort(() => Math.random() - 0.5);
+                styles.forEach(([prop, val]) => el.style[prop] = val);
                 setTimeout(() => {
                     try { el.remove(); } catch(e) { /* silent fail */ }
-                }, 50 + Math.floor(Math.random() * 100));
+                }, 50 + Math.floor(Math.random() * 200));
             } catch(e) { /* silent fail */ }
         },
-        
+        // Notification utility with fixed top-centered layout
         notify: function(msg) {
             try {
-                let n = document.createElement("div");
-                n.id = "ntf-" + Math.random().toString(36).substring(2, 8);
-                const positions = ["10px", "15px", "12px"];
-                const colors = ["#1E1E1E", "#232323", "#202020"];
-                const textColors = ["#66FF66", "#60FF60", "#68FF68"];
-                const posIndex = Math.floor(Math.random() * positions.length);
-                const colorIndex = Math.floor(Math.random() * colors.length);
+                // Create notification container
+                const n = document.createElement("div");
+                n.id = "ntf-" + Math.random().toString(36).substring(2, 8) + '-' + Date.now().toString(36).slice(-3);
+                // Load Google Font Cal Sans if needed
+                if (!document.getElementById('cal-sans-font')) {
+                    const link = document.createElement('link');
+                    link.id = 'cal-sans-font';
+                    link.rel = 'stylesheet';
+                    link.href = 'https://fonts.googleapis.com/css2?family=Cal+Sans:wght@400;700&display=swap';
+                    document.head.appendChild(link);
+                }
+                // Apply notification styles
                 Object.assign(n.style, {
                     position: "fixed",
-                    top: positions[posIndex],
+                    top: "20px",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    padding: "15px 25px", // Increased padding for larger size
-                    backgroundColor: colors[colorIndex],
-                    color: textColors[colorIndex],
-                    fontFamily: "monospace",
-                    fontSize: "16px", // Increased font size
-                    border: "1px solid #444",
-                    borderRadius: "5px", // Slightly larger border radius
-                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", // Slightly stronger shadow
-                    zIndex: "999999",
-                    transition: "opacity 0.3s ease-out"
+                    maxWidth: "400px",
+                    padding: "20px 30px",
+                    backgroundColor: "#e0e0e0",
+                    color: "#000",
+                    border: "1px solid #000",
+                    fontFamily: "'Cal Sans', sans-serif",
+                    fontSize: "18px",
+                    textAlign: "center",
+                    borderRadius: "8px",
+                    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
+                    opacity: "1",
+                    transition: "opacity 0.5s ease-out",
+                    zIndex: "999999"
                 });
                 n.textContent = msg;
                 document.body.appendChild(n);
+                // Fade out after 2s and remove
                 setTimeout(() => {
                     n.style.opacity = "0";
-                    setTimeout(() => n.remove(), 300);
-                }, 1800 + Math.floor(Math.random() * 400));
+                }, 2000);
+                // Ensure removal after fade
+                setTimeout(() => {
+                    if (n.parentNode) n.parentNode.removeChild(n);
+                }, 2500);
             } catch(e) { /* silent fail */ }
         },
-        
+        // URL cleaner utility
         urlClean: function(url) {
             try {
                 const urlObj = new URL(url);
-                const paramsToRemove = ['ref', 'inviteCode', 'share_code', 'affiliate'];
-                paramsToRemove.forEach(param => urlObj.searchParams.delete(param));
+                const paramsToRemove = ['ref', 'inviteCode', 'share_code', 'affiliate', 'trk', 'utm_source', 'utm_medium'];
+                paramsToRemove.sort(() => Math.random() - 0.5).forEach(param => urlObj.searchParams.delete(param));
                 return urlObj.toString();
             } catch(e) {
                 return url;
             }
         }
     };
-    
+
+    /**
+     * Finds elements that may represent risk overlays or popups.
+     */
+    // Slightly obfuscated, randomize selector order & regex
     function findRiskElements() {
         try {
             const results = [];
@@ -68,44 +104,43 @@
             const textMatches = Array.from(document.querySelectorAll('div, section, aside'))
                 .filter(el => {
                     try {
+                        // Skip notification elements
+                        if (el.id && el.id.startsWith('ntf-')) return false;
                         const text = el.innerText || '';
-                        const hasRiskText = /(risk|warning|reminder|caution|alert|confirm|agreement)/i.test(text);
+                        const riskWords = ['risk','warning','reminder','caution','alert','confirm','agreement'];
+                        const rx = new RegExp(riskWords.sort(() => Math.random() - 0.5).join('|'),'i');
+                        const hasRiskText = rx.test(text);
                         const isPopupStyle = (
                             window.getComputedStyle(el).position === 'fixed' || 
-                            parseInt(window.getComputedStyle(el).zIndex) > 100
+                            parseInt(window.getComputedStyle(el).zIndex) > 80 + Math.floor(Math.random()*60)
                         );
-                        return hasRiskText && isPopupStyle && text.length < 1000;
+                        return hasRiskText && isPopupStyle && text.length < 900 + Math.floor(Math.random()*200);
                     } catch(e) {
                         return false;
                     }
                 });
             results.push(...textMatches);
+            // Randomize selector order and add noise
+            // Obfuscated patterns and selectors
             const patterns = [
-                "[class*='modal']", "[class*='popup']", "[class*='dialog']",
-                "[class*='overlay']", "[class*='mask']", "[class*='drawer']",
-                "[id*='modal']", "[id*='popup']", "[id*='dialog']",
+                ...['modal', 'popup', 'dialog', 'overlay', 'mask', 'drawer'].map(k => `[class*='${k}']`),
+                ...['modal', 'popup', 'dialog'].map(k => `[id*='${k}']`),
                 "[role='dialog']", "[aria-modal='true']"
             ];
-            const patternMatches = Array.from(document.querySelectorAll(patterns.join(',')))
-                .filter(el => {
-                    try {
-                        const s = window.getComputedStyle(el);
-                        return (
-                            s.display !== 'none' && 
-                            (s.position === 'fixed' || parseInt(s.zIndex) > 100) &&
-                            el.offsetWidth > 200 && el.offsetHeight > 100
-                        );
-                    } catch(e) {
-                        return false;
-                    }
-                });
-            results.push(...patternMatches);
+            // Obfuscate selector string
+            const selParts = ['el', 'overlay', 'n-modal-body-wrapper', 'risk-modal', 'ant-modal-root', 'modal', 'overlay', 'keywords-modal'];
+            const siteMatches = Array.from(document.querySelectorAll(
+                `.${selParts[0]}-${selParts[1]}, .${selParts[2]}, div.${selParts[3]}, .${selParts[4]}, div[class*='${selParts[5]}'] + div[class*='${selParts[6]}'], #${selParts[7]}`
+            ));
+            results.push(...siteMatches);
             if (/cnfans|joya|mule|orient|hoo|oop/i.test(hostname)) {
                 const siteMatches = Array.from(document.querySelectorAll(
                     ".el-overlay, .n-modal-body-wrapper, div.risk-modal, .ant-modal-root, " +
                     "div[class*='modal'] + div[class*='overlay'], #keywords-modal"
                 ));
+                if (Math.random() > 0.2) {
                 results.push(...siteMatches);
+            }
             }
             return Array.from(new Set(results));
         } catch(e) {
@@ -113,15 +148,19 @@
         }
     }
 
+    /**
+     * Cleans up links by restoring original hrefs if needed.
+     */
+    // Slightly obfuscated, randomize link selection
     function cleanLinks() {
         try {
             let linksCleaned = 0;
-            const links = document.querySelectorAll("a[href]");
+            const links = document.querySelectorAll("a[href]" + (Math.random() > 0.5 ? ":not([href*='javascript'])" : ""));
             links.forEach(link => {
                 try {
                     if (!link.hasAttribute('data-processed-' + instanceId)) {
                         const originalHref = link.href;
-                        const cleanedHref = _ops.urlClean(originalHref);
+                        const cleanedHref = domUtils.urlClean(originalHref);
                         if (cleanedHref !== originalHref) {
                             link.href = cleanedHref;
                             link.setAttribute('data-original-href', originalHref);
@@ -132,7 +171,7 @@
                 } catch(e) { /* continue to next link */ }
             });
             if (linksCleaned > 0) {
-                _ops.notify("//: System: Sanitized " + linksCleaned + " links");
+                domUtils.notify("//: System: Sanitized " + linksCleaned + " links");
             }
             return linksCleaned;
         } catch(e) {
@@ -140,17 +179,25 @@
         }
     }
     
+    /**
+     * Cleans up the current page URL by removing certain query parameters.
+     */
+    // Slightly obfuscated, randomize param order
     function cleanPageURL() {
         try {
             const currentURL = window.location.href;
-            const cleanedURL = _ops.urlClean(currentURL);
+            const cleanedURL = domUtils.urlClean(currentURL);
             if (cleanedURL !== currentURL) {
                 history.replaceState(null, document.title, cleanedURL);
-                _ops.notify("//: System: URL sanitized");
+                domUtils.notify("//: System: URL sanitized");
             }
         } catch(e) { /* silent fail */ }
     }
     
+    /**
+     * Enables and checks the 'agree' checkbox if present.
+     */
+    // Slightly obfuscated, randomize selector order
     function activateAgreeCheckbox() {
         try {
             const checkboxSelectors = [
@@ -180,15 +227,19 @@
                 const activated = enableCheckbox();
                 attempts++;
                 if (activated > 0) {
-                    _ops.notify("//: System: Checkbox activated");
+                    domUtils.notify("//: System: Checkbox activated");
                 }
                 if (attempts >= checkAttempts) {
                     clearInterval(interval);
                 }
-            }, checkInterval);
+            }, 400 + Math.floor(Math.random() * 200)); // Randomize interval
         } catch(e) { /* silent fail */ }
     }
     
+    /**
+     * Restores scrolling to the page if it was disabled by overlays.
+     */
+    // Slightly obfuscated, randomize property order
     function restoreScrolling() {
         try {
             const bodyStyle = document.body.style;
@@ -207,6 +258,10 @@
         } catch(e) { /* silent fail */ }
     }
     
+    /**
+     * Injects CSS to hide overlays/popups stealthily.
+     */
+    // Slightly obfuscated, randomize selectors and rules
     function injectStealthCSS() {
         try {
             const styleId = 'stealth-style-' + instanceId;
@@ -243,19 +298,22 @@
         } catch(e) { /* silent fail */ }
     }
     
+    /**
+     * Removes risk overlays/popups from the DOM.
+     */
     function removeRiskElements() {
         try {
             const elements = findRiskElements();
             let removed = 0;
             elements.forEach(el => {
                 if (!el.hasAttribute('data-removed-' + instanceId)) {
-                    _ops.rmv(el);
+                    domUtils.rmv(el);
                     el.setAttribute('data-removed-' + instanceId, 'true');
                     removed++;
                 }
             });
             if (removed > 0) {
-                _ops.notify("//: System: Task terminated");
+                domUtils.notify("Risk removed by https://github.com/s1krace/risker");
                 restoreScrolling();
             }
             return removed;
@@ -264,9 +322,16 @@
         }
     }
     
+    // =========================
+    // 3. Observers and Event Listeners
+    // =========================
+    /**
+     * Observes DOM changes to reactively remove overlays/popups.
+     */
     function observeDomChanges() {
         try {
-            const randomDelay = () => 100 + Math.floor(Math.random() * 150);
+            // Randomize delay further
+            const randomDelay = () => 80 + Math.floor(Math.random() * 200);
             const observer = new MutationObserver(mutations => {
                 setTimeout(() => {
                     let shouldProcess = false;
@@ -303,6 +368,9 @@
         }
     }
     
+    /**
+     * Intercepts link clicks to restore original navigation if needed.
+     */
     function setupLinkInterception() {
         try {
             document.addEventListener('click', event => {
@@ -317,6 +385,9 @@
         } catch(e) { /* silent fail */ }
     }
     
+    /**
+     * Periodically checks and maintains script activity.
+     */
     function setupHeartbeat() {
         try {
             const heartbeatKey = btoa('hb_' + instanceId);
@@ -325,7 +396,7 @@
             const interval = setInterval(() => {
                 try {
                     sessionStorage.setItem(heartbeatKey, ++counter);
-                    if (typeof _ops.rmv !== 'function' || typeof _ops.notify !== 'function') {
+                    if (typeof domUtils.rmv !== 'function' || typeof domUtils.notify !== 'function') {
                         initialize();
                     }
                     removeRiskElements();
@@ -342,6 +413,12 @@
         } catch(e) { /* silent fail */ }
     }
     
+    // =========================
+    // 4. Initialization Logic
+    // =========================
+    /**
+     * Initializes all features and sets up observers.
+     */
     function initialize() {
         try {
             cleanPageURL();
@@ -367,17 +444,26 @@
         }
     }
     
+    // =========================
+    // 5. Function Overrides (Anti-Detection)
+    // =========================
     try {
+        // Anti-fingerprinting: Hide our script from Function.prototype.toString
         const originalFunction = Function.prototype.toString;
         Function.prototype.toString = function() {
-            if (this === initialize || 
-                this === removeRiskElements || 
-                this === _ops.rmv || 
-                this === _ops.notify) {
+            const fakes = [initialize, removeRiskElements, domUtils.rmv, domUtils.notify];
+            if (fakes.includes(this)) {
                 return 'function() { [native code] }';
             }
             return originalFunction.apply(this, arguments);
         };
+        // Anti-fingerprinting: Remove script element traces
+        const scripts = document.querySelectorAll('script');
+        scripts.forEach(s => {
+            if (s.innerText.includes('Content Script Main Entry')) {
+                s.remove();
+            }
+        });
     } catch(e) { /* silent fail */ }
     
     initialize();
