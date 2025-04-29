@@ -1,18 +1,18 @@
 # Risker by Race 🛡️
 
-## Enjoy a Seamless Browsing Experience! 🌟
+## Have a Smooth Browsing Experience! 🌟
 
-Are you tired of those annoying risk/warning pop-ups and sneaky affiliate links on Chinese shopping agent sites? Risker by Race is here to make your browsing experience smooth and hassle-free! This lightweight Chrome extension automatically removes those pesky reminders and cleans up URLs, giving you a cleaner, faster browsing experience.
+Fed up with those annoying risk/warning pop-ups and affiliate links on Chinese shopping agent sites? Risker by Race is here to ensure your browsing experience is smooth and hassle-free! This Chrome extension is light and removes those pesky reminders automatically, cleaning up URLs and giving you a cleaner, faster browsing experience.
 
 ## ✨ Key Features
 
-* **Automatic Pop-Up Removal:** Say goodbye to intrusive risk/warning pop-ups on supported sites.
-* **Clean URLs:** Strip away affiliate tracking codes for straightforward, clean links.
-* **Discreet Notifications:** Stay informed with subtle, terminal-style notifications that don't disrupt your flow.
-* **Efficient Performance:** Runs silently in the background, ensuring your browser stays fast and responsive.
-* **Privacy-First:** No tracking of your browsing data. Everything operates locally on your browser.
-* **No Redirects:** Direct access to the content you want, without any detours.
-* **Completely Free:** Enjoy all features without any hidden costs or subscriptions.
+* **Auto Pop-Up Remover:** Eliminate obstructive risk/warning pop-ups on supported sites.
+* **Clean Links:** Eliminate affiliate tracking codes for tidy, simple links.
+* **Unobtrusive Notifications:** Receive notification with subtle, terminal-style notifications that will not get in your way.
+* **Lightweight Performance:** Runs unobtrusively in the background so your browser stays fast and responsive.
+* **Privacy-Focused:** Does not track any of your browsing data. It all occurs locally within your browser.
+* **No Redirects:** Go straight to the content you want, without detours.
+* **Completely Free:** Use all features with no secret fees or subscriptions.
 
 ## 🎯 Supported Websites
 
@@ -26,28 +26,28 @@ Risker by Race currently supports:
 * `oopbuy.com`
 * `hoobuy.com`
 
-Stay tuned for more sites in future updates!
+Additional websites are on the way in future updates, so keep an eye out!
 
 ## ⚙️ Easy Installation
 
 1. **Download the Code:** Click the green "Code" button and select "Download ZIP."
-2. **Extract Files:** Unzip the downloaded file to a folder on your computer.
+2. **Extract Files:** Unzip the file you downloaded to a folder on your computer.
 3. **Load in Chrome:**
    * Open Chrome and navigate to `chrome://extensions/`.
-   * Enable "Developer mode" in the top right corner.
-   * Click "Load unpacked" and select the folder where you extracted the files.
+   * Enable "Developer mode" in the top right.
+   * Click "Load unpacked" and then select the folder where you unzipped the files.
 
-Risker by Race is now ready to enhance your browsing experience!
+Risker by Race is now installed to enhance your browsing experience!
 
 ## 🚀 How It Works
 
-Once installed, Risker by Race works automatically. No need for any setup or configuration. It silently removes risk reminders and cleans affiliate links, with a brief notification to keep you informed.
+Once installed, Risker by Race works automatically. There is no configuration or setup needed. It silently removes risk reminders and cleans affiliate links, with a brief notification to inform you.
 
 ## 🤝 Contribute
 
-Got ideas for improvement or want to add support for more websites? We welcome your contributions!
+Got ideas for improvement or want to add support for more websites? We welcome contributions!
 
-* Report bugs or suggest features through the "Issues" tab.
+* File an issue in the "Issues" tab for reporting bugs or proposing features.
 * Fork the repository and submit pull requests with your enhancements.
 
 ## 📜 License
