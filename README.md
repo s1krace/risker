@@ -1,4 +1,4 @@
-# Risker by Race - Your Peacekeeper 🛡️
+# Risker by Race 🛡️
 
 ## Chill Out and Browse Better! 👋
 
