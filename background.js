@@ -33,6 +33,45 @@
         }
     });
 
+    // Background cleanup logic
+    function purgeDeletedAffiliates() {
+      chrome.storage.onChanged.addListener((changes) => {
+        if(changes.affiliates) {
+          // Server sync placeholder
+          console.log('Affiliates updated:', changes.affiliates.newValue);
+        }
+      });
+    }
+
+    purgeDeletedAffiliates();
+
+    // Storage version management
+    chrome.runtime.onInstalled.addListener(({reason}) => {
+      if(reason === 'install' || reason === 'update') {
+        chrome.storage.sync.get(['schemaVersion'], ({schemaVersion}) => {
+          const currentVersion = 1;
+          if(!schemaVersion || schemaVersion < currentVersion) {
+            migrateStorage(schemaVersion || 0, currentVersion);
+          }
+        });
+      }
+    });
+
+    function migrateStorage(oldVersion, newVersion) {
+      chrome.storage.sync.get(['affiliates'], ({affiliates}) => {
+        const migrated = affiliates ? affiliates.map(a => ({
+          ...a,
+          id: a.id || Date.now().toString(),
+          markedForDeletion: a.markedForDeletion || false
+        })) : [];
+        
+        chrome.storage.sync.set({
+          schemaVersion: newVersion,
+          affiliates: migrated
+        });
+      });
+    }
+
     // Handle extension clicking
     chrome.action.onClicked.addListener(function(tab) {
         const scriptOptions = {
