@@ -15,4 +15,24 @@ document.addEventListener("DOMContentLoaded", function () {
             // Silently ignore errors or confirmations
         });
     });
+
+    // Delete affiliate handler
+    document.getElementById('delete-affiliate-btn').addEventListener('click', () => {
+      chrome.storage.sync.get(['affiliates'], ({affiliates}) => {
+        // Validation check
+        const isValid = Array.isArray(affiliates) && 
+          affiliates.every(a => 
+            typeof a?.id === 'string' &&
+            typeof a?.markedForDeletion === 'boolean'
+          );
+        
+        if(!isValid) {
+          alert('Invalid affiliate data structure - aborting deletion');
+          return;
+        }
+
+        const filtered = affiliates.filter(a => !a.markedForDeletion);
+        chrome.storage.sync.set({ affiliates: filtered });
+      });
+    });
 });
