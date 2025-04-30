@@ -43,7 +43,11 @@
     },
     "manifest_version": 3,
     "name": "Risker by Race",
-    "permissions": ["activeTab", "scripting", "storage"],
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
     "version": "1.4.0",
     "web_accessible_resources": [
         {
